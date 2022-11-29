@@ -1,0 +1,8 @@
+.Nav-flex {
+  flex-direction: row;
+  display: flex;
+}
+
+.Nav-container {
+  justify-content: space-evenly !important;
+}
