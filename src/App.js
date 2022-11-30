@@ -2,8 +2,11 @@ import "./App.css";
 import { useState } from "react";
 import axios from "axios";
 import Main from './routes/js/Main.js'
-import Login from './routes/js/login.js'
+import Login from './routes/js/Login.js'
+import Restaurants from './routes/js/Restaurants.js'
+import Category from './routes/js/Category.js'
 import NavbarBottom from './components/js/navbar.js'
+import Community from './routes/js/Communities.js'
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
@@ -26,15 +29,18 @@ function App() {
                         버튼
                     </button>
                     {console.log(test)}
-            
+
             {/* 페이지나누기 */}
             <Routes>
-                    <Route path="*" element={<div>404페이지</div>}></Route>
-                    <Route path="/main" element={<Main/>}></Route>  {/* 메인페이지 */}
-                    <Route path="/login" element={<Login/>}></Route>
+                    <Route path="*" element={<div>404페이지</div>}/>
+                    <Route path="/main" element={<Main/>}/>  {/* 메인페이지 */}
+                    <Route path="/login" element={<Login/>}/> {/* 로그인페이지 */}
+                    <Route path="/res_index" element={<Restaurants/>}/>  
+                    <Route path="/res_category" element={<Category/>}/>  
+                    <Route path="/community" element={<Community/>}/>  
             </Routes>
             </Container>
-            <NavbarBottom/>
+            <NavbarBottom/> 
         </div>
     );
 }
