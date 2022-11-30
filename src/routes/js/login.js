@@ -1,77 +1,92 @@
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, clearUser } from '../../store';
 
 
 function Login() {
   var baseURL = process.env.REACT_APP_BASE_URL // 환경변수설정
+  let dispatch = useDispatch();
 
-  const [inputId, setInputId] = useState('')
-  const [inputPw, setInputPw] = useState('')
-  const [csrftoken, setCsrftoken] = useState('')
-  const [info, setInfo] = useState({
-    nickname: "",
-    email: "",
-    name: "",
-    password: ""
-  })
-  const handleInputId = (e) => {
+  const [inputId, setInputId] = useState('') // 아이디
+  const [inputPw, setInputPw] = useState('') // 비밀번호
+  const [loading, setLoading] = useState(false)
+  const [msg, setMsg] = useState("")
+  const handleInputId = (e) => {  // 아이디 값 받기
     setInputId(e.target.value)
   }
-  const handleInputPw = (e) => {
+  const handleInputPw = (e) => {  // 비밀번호 값 받기
     setInputPw(e.target.value)
   }
-  const csrftokens = Cookies.get('csrftoken');
-
-  let testData = {
-    email: "test6@example.com",
-    password: "crud1234",
-    nickname: "admin1234",
-    name: "kevin4162",
-    alcohol: 0,
-    talk: 1,
-    smoke: 0,
-    speed: 2,
-    gender: 0,
-    manner: 36.5
+  const LoginFunc = (e) => {
+    e.preventDefault();
+    if (!inputId) {
+      return alert("ID를 입력하세요.");
+    }
+    else if (!inputPw) {
+      return alert("Password를 입력하세요.");
+    } else {
+      axios.post(`${baseURL}/user/auth/`, {
+        email: inputId,
+        password: inputPw,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }, {
+        withCredentials: true
+      })
+        .then((res) => {
+          console.log(res)
+          console.log(res.status)
+          if (res.status === 200) {
+            console.log("로그인")
+            console.log(res.data.user)
+            dispatch(loginUser(res.data.user))
+            setMsg("")
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+    setLoading(true);
   }
 
 
-  console.log(csrftokens)
+  useEffect(()=>{
+    if (msg) {
+      setTimeout(() => {
+        setMsg("");
+        setLoading(false);
+      }, 1500);
+    }
+  }, [msg])
+
   return (
     <>
-      <Form>
+      <Form onSubmit={LoginFunc}>
         <EmailCheck handleInputId={handleInputId} />
         <PasswordCheck handleInputPw={handleInputPw} />
+        <button type='submit' disabled={loading}>로그인</button>
       </Form>
-      {console.log({ inputId })}
-      {console.log({ inputPw })}
-      <button onClick={() => {
-        setInfo(testData)
-        console.log(info)
-        console.log(baseURL)
-      }}>상태테스트</button>
-      <button onClick={() => {
-        axios.post(`${baseURL}/user/auth/refresh/`)
-          .then((res) => {
-            console.log(res)
-          })
-      }}>토큰갱신</button>
-
+    
+      
       <button
         onClick={() => {
           axios.post(`${baseURL}/user/register/`, {
-            nickname: info.nickname,
-            email: info.email,
-            name: info.name,
-            password: info.password,
-            alcohol: info.alcohol,
-            talk: info.talk,
-            smoke: info.smoke,
-            speed: info.speed,
-            gender: info.gender,
-            manner: info.manner,
+            nickname: 'nickname',
+            email: 'email',
+            name: 'name',
+            password: 'password',
+            alcohol: 'alcohol',
+            talk: 'talk',
+            smoke: 'smoke',
+            speed: 'speed',
+            gender: 'gender',
+            manner: 'manner',
           }, {
             headers: {
               'Content-Type': 'application/json'
@@ -88,53 +103,9 @@ function Login() {
         }}>
         회원가입 테스트
       </button>
-      <button onClick={() => {
-        axios.get(`${baseURL}/user/csrf_cookie/`, {
-          withCredentials: true
-        })
-          .then((res) => {
-            console.log(res.headers.get('Set-Cookie'))
-            setCsrftoken(res.headers.get('Set-Cookie'))
-            console.log(csrftoken)
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      }}>
-        csrf 테스트1
-      </button>
-      <button onClick={() => {
-        axios.get(`${baseURL}/user/register/`, {
-          withCredentials: true
-        })
-          .then((res) => {
-            console.log(res)
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      }}>
-        csrf 테스트2
-      </button>
       <button
         onClick={() => {
-          axios.post(`${baseURL}/user/auth/`, {
-            email: inputId,
-            password: inputPw,
-          }, {
-            headers: {
-              'Content-Type': 'application/json',
-              'X-CSRFToken': csrftokens,
-            }
-          }, {
-            withCredentials: true
-          })
-            .then((res) => {
-              console.log(res)
-            })
-            .catch((err) => {
-              console.log(err)
-            })
+          
         }}>
         로그인 테스트
       </button>
@@ -175,4 +146,23 @@ function EmailCheck(props) {
 }
 
 
-export default Login;
+
+function MyPage() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const LogoutFunc = () => {
+    console.log('로그아웃');
+    dispatch(clearUser());
+  }
+
+  return (
+    <>
+      <h1>MyPage</h1>
+      <p>{user.name}님, 안녕하세요!</p>
+      <button onClick={() => LogoutFunc()}>로그아웃</button>
+    </>
+  )
+}
+
+export { Login, MyPage } ;
