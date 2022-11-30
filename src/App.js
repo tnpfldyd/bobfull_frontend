@@ -17,30 +17,30 @@ function App() {
         <div className="App">
             <Container className="base-container">
                 <h1>연습</h1>
-                    <button
-                        onClick={() => {
-                            axios.get("http://127.0.0.1:8000/articles/review/1/").then((res) => {
-                                let copy = [...test]
-                                copy.push(res.data.content)
-                                setTest(copy)
-                            });
-                        }}
-                    >
-                        버튼
-                    </button>
-                    {console.log(test)}
+                <button
+                    onClick={() => {
+                        axios.get("http://127.0.0.1:8000/articles/review/1/").then((res) => {
+                            let copy = [...test]
+                            copy.push(res.data.content)
+                            setTest(copy)
+                        });
+                    }}
+                >
+                    버튼
+                </button>
+                {console.log(test)}
 
-            {/* 페이지나누기 */}
-            <Routes>
-                    <Route path="*" element={<div>404페이지</div>}/>
-                    <Route path="/main" element={<Main/>}/>  {/* 메인페이지 */}
-                    <Route path="/login" element={<Login/>}/> {/* 로그인페이지 */}
-                    <Route path="/res_index" element={<Restaurants/>}/>  
-                    <Route path="/res_category" element={<Category/>}/>  
-                    <Route path="/community" element={<Community/>}/>  
-            </Routes>
+                {/* 페이지나누기 */}
+                <Routes>
+                    <Route path="*" element={<div>404페이지</div>} />
+                    <Route path="/main" element={<Main />} />  {/* 메인페이지 */}
+                    <Route path="/login" element={<Login />} /> {/* 로그인페이지 */}
+                    <Route path="/res_index" element={<Restaurants />} />
+                    <Route path="/res_category" element={<Category />} />
+                    <Route path="/community" element={<Community />} />
+                </Routes>
             </Container>
-            <NavbarBottom/> 
+            <NavbarBottom />
         </div>
     );
 }
