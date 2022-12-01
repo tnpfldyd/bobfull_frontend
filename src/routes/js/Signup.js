@@ -13,7 +13,7 @@ function Signup() {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password1 !== password2) {
-      return alert('ㅂㅂㅂㅂㅂㅂㅂㅂ')
+      return alert('비밀번호가 서로 다릅니다.')
     }
     axios({
       method: 'post',
