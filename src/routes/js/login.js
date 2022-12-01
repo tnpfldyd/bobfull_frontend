@@ -1,25 +1,25 @@
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, clearUser } from '../../store';
+import { loginUser, clearUser } from '../../store/userSlice.js';
 
 
 function Login() {
   var baseURL = process.env.REACT_APP_BASE_URL // 환경변수설정
   let dispatch = useDispatch();
-
   const [inputId, setInputId] = useState('') // 아이디
   const [inputPw, setInputPw] = useState('') // 비밀번호
-  const [loading, setLoading] = useState(false)
-  const [msg, setMsg] = useState("")
+  const [loading, setLoading] = useState(false) // 로딩
+  const [msg, setMsg] = useState("")  // 메시지
   const handleInputId = (e) => {  // 아이디 값 받기
     setInputId(e.target.value)
   }
   const handleInputPw = (e) => {  // 비밀번호 값 받기
     setInputPw(e.target.value)
   }
+
+
   const LoginFunc = (e) => {
     e.preventDefault();
     if (!inputId) {
@@ -55,7 +55,6 @@ function Login() {
     setLoading(true);
   }
 
-
   useEffect(()=>{
     if (msg) {
       setTimeout(() => {
@@ -66,50 +65,11 @@ function Login() {
   }, [msg])
 
   return (
-    <>
       <Form onSubmit={LoginFunc}>
         <EmailCheck handleInputId={handleInputId} />
         <PasswordCheck handleInputPw={handleInputPw} />
         <button type='submit' disabled={loading}>로그인</button>
       </Form>
-    
-      
-      <button
-        onClick={() => {
-          axios.post(`${baseURL}/user/register/`, {
-            nickname: 'nickname',
-            email: 'email',
-            name: 'name',
-            password: 'password',
-            alcohol: 'alcohol',
-            talk: 'talk',
-            smoke: 'smoke',
-            speed: 'speed',
-            gender: 'gender',
-            manner: 'manner',
-          }, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }, {
-            withCredentials: true
-          })
-            .then((res) => {
-              console.log(res)
-            })
-            .catch((err) => {
-              console.log(err)
-            })
-        }}>
-        회원가입 테스트
-      </button>
-      <button
-        onClick={() => {
-          
-        }}>
-        로그인 테스트
-      </button>
-    </>
   )
 }
 
@@ -137,14 +97,11 @@ function PasswordCheck(props) {
 
 function EmailCheck(props) {
   return (
-    <>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Control type="email" placeholder="이메일주소" onChange={props.handleInputId} />
       </Form.Group>
-    </>
   );
 }
-
 
 
 function MyPage() {
