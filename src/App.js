@@ -11,10 +11,10 @@ import Signup from './routes/js/Signup.js'
 import Profile from './routes/js/Profile.js'
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import Signup from './routes/js/Signup'
+import Roulette from "./routes/js/Roulette";
 function App() {
   const user = useSelector((state) => state.user);
-    
     return (
       <div className="App">
           
