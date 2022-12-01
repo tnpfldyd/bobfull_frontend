@@ -1,13 +1,14 @@
-import { Form } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, clearUser } from '../../store/userSlice.js';
-
+import '../css/Login.css'
 
 function Login() {
   var baseURL = process.env.REACT_APP_BASE_URL // 환경변수설정
   let dispatch = useDispatch();
+  
   const [inputId, setInputId] = useState('') // 아이디
   const [inputPw, setInputPw] = useState('') // 비밀번호
   const [loading, setLoading] = useState(false) // 로딩
@@ -47,6 +48,15 @@ function Login() {
             dispatch(loginUser(res.data.user))
             setMsg("")
           }
+          if(res.status === 400) {
+            setMsg("ID, Password가 비어있습니다.");
+          }
+          if(res.status === 401) {
+            setMsg("존재하지 않는 ID입니다.");
+          }
+          if(res.status === 402) {
+            setMsg("Password가 틀립니다.");
+          }
         })
         .catch((err) => {
           console.log(err)
@@ -65,11 +75,25 @@ function Login() {
   }, [msg])
 
   return (
-    <Form onSubmit={LoginFunc}>
-      <EmailCheck handleInputId={handleInputId} />
-      <PasswordCheck handleInputPw={handleInputPw} />
-      <button type='submit' disabled={loading}>로그인</button>
-    </Form>
+    <Container className='login-container'>
+    <div className='login-layout'>
+      <h2 className='text-center'>이미지 밥풀</h2>
+      <h3 className='text-center mb-5'>간편하게 로그인하고 
+        <br/>다양한 서비스를 이용하세요</h3>
+      <Form onSubmit={LoginFunc} className="login-form">
+        <EmailCheck handleInputId={handleInputId} />
+        <PasswordCheck handleInputPw={handleInputPw} />
+        <div className='login-btn'>
+          <button type='submit' disabled={loading}>로그인</button>
+        </div>
+      </Form>
+      <div className='login-menu'>
+        <div>아이디 찾기</div>
+        <div>비밀번호 찾기</div>
+        <div>회원가입</div>
+      </div>
+    </div>
+    </Container>
   )
 }
 
@@ -80,7 +104,6 @@ function PasswordCheck(props) {
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Control
           type="password"
-          id="inputPassword5"
           aria-describedby="passwordHelpBlock"
           placeholder="비밀번호"
           onChange={props.handleInputPw}
@@ -103,23 +126,4 @@ function EmailCheck(props) {
   );
 }
 
-
-function MyPage() {
-  const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-
-  const LogoutFunc = () => {
-    console.log('로그아웃');
-    dispatch(clearUser());
-  }
-
-  return (
-    <>
-      <h1>MyPage</h1>
-      <p>{user.name}님, 안녕하세요!</p>
-      <button onClick={() => LogoutFunc()}>로그아웃</button>
-    </>
-  )
-}
-
-export { Login, MyPage };
+export default Login;
