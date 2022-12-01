@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '../../components/css/Button.module.css';
+
 function Signup() {
   var baseURL = process.env.REACT_APP_BASE_URL
   const [email, setEmail] = useState('');
@@ -33,14 +34,15 @@ function Signup() {
         manner: 36.5,
       }
     })
-      .then(response => {
-        console.log(response)
+      .then(res => {
+        console.log(res)
       })
       .catch((err) => {
         console.log(err.response.data)
         return alert('중복된 이메일이 있습니다.')
       })
   }
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -95,3 +97,4 @@ function Signup() {
   );
 }
 export default Signup;
+
