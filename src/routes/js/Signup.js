@@ -38,8 +38,7 @@ function Signup() {
         console.log(res)
       })
       .catch((err) => {
-        console.log(err.response.data)
-        return alert('중복된 이메일이 있습니다.')
+        console.log(err)
       })
   }
 

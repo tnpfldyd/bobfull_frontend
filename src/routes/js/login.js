@@ -55,7 +55,7 @@ function Login() {
     setLoading(true);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (msg) {
       setTimeout(() => {
         setMsg("");
@@ -65,11 +65,11 @@ function Login() {
   }, [msg])
 
   return (
-      <Form onSubmit={LoginFunc}>
-        <EmailCheck handleInputId={handleInputId} />
-        <PasswordCheck handleInputPw={handleInputPw} />
-        <button type='submit' disabled={loading}>로그인</button>
-      </Form>
+    <Form onSubmit={LoginFunc}>
+      <EmailCheck handleInputId={handleInputId} />
+      <PasswordCheck handleInputPw={handleInputPw} />
+      <button type='submit' disabled={loading}>로그인</button>
+    </Form>
   )
 }
 
@@ -97,9 +97,9 @@ function PasswordCheck(props) {
 
 function EmailCheck(props) {
   return (
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Control type="email" placeholder="이메일주소" onChange={props.handleInputId} />
-      </Form.Group>
+    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Control type="email" placeholder="이메일주소" onChange={props.handleInputId} />
+    </Form.Group>
   );
 }
 
@@ -122,4 +122,4 @@ function MyPage() {
   )
 }
 
-export { Login, MyPage } ;
+export { Login, MyPage };
