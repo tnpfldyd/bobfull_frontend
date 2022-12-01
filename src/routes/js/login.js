@@ -29,7 +29,7 @@ function Login() {
     else if (!inputPw) {
       return alert("Password를 입력하세요.");
     } else {
-      axios.post(`${baseURL}/user/auth/`, {
+      axios.post(`${baseURL}/accounts/login/`, {
         email: inputId,
         password: inputPw,
       }, {
@@ -77,7 +77,9 @@ function Login() {
   return (
     <Container className='login-container'>
     <div className='login-layout'>
-      <h2 className='text-center'>이미지 밥풀</h2>
+      <div className='login-logo'>
+        <img src="/logo.png" alt="" width="100px"/>
+      </div>
       <h3 className='text-center mb-5'>간편하게 로그인하고 
         <br/>다양한 서비스를 이용하세요</h3>
       <Form onSubmit={LoginFunc} className="login-form">

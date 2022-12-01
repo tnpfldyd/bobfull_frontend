@@ -6,8 +6,7 @@ import styled from '../../components/css/Button.module.css';
 function Signup() {
   var baseURL = process.env.REACT_APP_BASE_URL
   const [email, setEmail] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const onSubmit = (e) => {
@@ -17,25 +16,22 @@ function Signup() {
     }
     axios({
       method: 'post',
-      url: `${baseURL}/user/register/`,
+      url: `${baseURL}/accounts/registration/`,
       headers: {
         'Content-Type': 'application/json'
       },
       data: {
+        // username: username,
         email: email,
-        nickname: nickname,
-        password: password1,
-        name: name,
-        alcohol: false,
-        talk: false,
-        smoke: false,
-        speed: 3,
-        gender: false,
-        manner: 36.5,
+        password1: password1,
+        password2: password2,
       }
     })
       .then(res => {
         console.log(res)
+        if (res.status === 201) {
+          return alert('성공적으로 회원가입 되었습니다.')
+        }
       })
       .catch((err) => {
         console.log(err)
@@ -45,24 +41,15 @@ function Signup() {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input
+        {/* <input
           onChange={(e) => {
-            setNickname(e.target.value)
+            setUsername(e.target.value)
           }}
-          value={nickname}
-          type="text"
-          placeholder='아이디'
-          className={styled.input}
-        />
-        <input
-          onChange={(e) => {
-            setName(e.target.value)
-          }}
-          value={name}
+          value={username}
           type="text"
           placeholder='이름'
           className={styled.input}
-        />
+        /> */}
         <input
           onChange={(e) => {
             setEmail(e.target.value)

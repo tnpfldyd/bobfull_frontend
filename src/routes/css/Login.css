@@ -29,3 +29,8 @@
 .login-menu div {
   
 }
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+}
