@@ -13,6 +13,7 @@ function Restaurants() {
     getRes()
   }, [])
 
+  console.log(decodeURIComponent('https%3A/img1.kakaocdn.net/cthumb/local/R0x420/%3Ffname%3Dhttp%253A%252F%252Ft1.daumcdn.net%252Flocalfiy%252F0E5A318194D440E3B860D1490A8E9BA9'))
   console.log(restaurants)
   return (
     <>
@@ -31,7 +32,7 @@ function Restaurants() {
             <div>
               <div>아이디값 : {data.id} | 식당명 : {data.name} | 주소 : {data.address}</div>
               {data.images.map((img, i)=> {
-                return(<img src={decodeURI(data.images[i].image.replace('http://127.0.0.1:8000/media/',''))}></img>)
+                return(<img src={decodeURIComponent(data.images[i].image.replace('http://127.0.0.1:8000/media/',''))}></img>)
               })}
               
             </div>)
