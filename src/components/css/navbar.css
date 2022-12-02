@@ -6,3 +6,31 @@
 .Nav-container {
   justify-content: space-evenly !important;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: grey; */
+  /* opacity: 0.5; */
+  text-align: center;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0px;
+}
+
+.navdiv {
+  text-align: center;
+}
+
+.navtext {
+  font-size: 10px;
+  font-weight: 700;
+  /* : center; */
+  max-width: 33.48px;
+  color: black;
+}

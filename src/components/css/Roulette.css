@@ -1,6 +1,6 @@
 .rouletter {
   position: relative;
-  height: 800px;
+  height: 100vh;
 }
 
 .rouletter-bg {
@@ -8,8 +8,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   border-radius: 350px;
   overflow: hidden;
 }
@@ -26,7 +26,7 @@
 
 .rouletter-arrow {
   position: absolute;
-  top: 23%;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
   width: 1px;
