@@ -1,22 +1,32 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import '../css/Restaurants.css'
+import {Container} from 'react-bootstrap'
 
 function Restaurants() {
   var baseURL = process.env.REACT_APP_BASE_URL
   const [restaurants, setRestaurants] = useState()
+  const [resImgs, setResImgs] = useState()
   const getRes = async () => {
     const res = await axios.get(`${baseURL}/restaurant/`, {headers: { 'Content-Type': 'application/json' }})
     setRestaurants(res.data)
   }
-
+  
+  // 랜더링시 레스토랑 정보 받아오기
   useEffect(() => {
     getRes()
   }, [])
 
-  console.log(decodeURIComponent('https%3A/img1.kakaocdn.net/cthumb/local/R0x420/%3Ffname%3Dhttp%253A%252F%252Ft1.daumcdn.net%252Flocalfiy%252F0E5A318194D440E3B860D1490A8E9BA9'))
-  console.log(restaurants)
+  if (restaurants != null) {
+    restaurants.map((data)=>{
+      {data.images.map((img, i)=> {
+        console.log(decodeURIComponent(data.images[i].image.replace('http://127.0.0.1:8000/media/','')))
+      })}
+    }) 
+  }
+  
   return (
-    <>
+    <Container>
       <h6>현재위치</h6>
       <form action="">
         <input type="text" />
@@ -27,18 +37,26 @@ function Restaurants() {
         <div>필터</div>
       </div>
       {
-        restaurants != null ? restaurants.map((data)=>{
+        restaurants != null ? restaurants.map((data, idx)=>{
           return(
-            <div>
-              <div>아이디값 : {data.id} | 식당명 : {data.name} | 주소 : {data.address}</div>
+            <div className='res-one' key={idx}>
+              <div className='res-img-wrapper'>
               {data.images.map((img, i)=> {
-                return(<img src={decodeURIComponent(data.images[i].image.replace('http://127.0.0.1:8000/media/',''))}></img>)
-              })}
-              
+                return(
+                  <img src={decodeURIComponent(data.images[i].image.replace('http://127.0.0.1:8000/media/',''))} className='res-img'/>
+                  )
+                })}
+              </div>
+              <div>식당번호 : {data.id} | 식당명 : {data.name}</div>
+              <div className='res-detail'>
+                <div>별점</div>
+                <div>거리</div>
+              </div>
             </div>)
         }) : null
       }
-    </>
+    </Container>
   )
 }
+
 export default Restaurants

@@ -1,0 +1,17 @@
+.res-one {
+  margin: 20px 0
+}
+
+.res-img {
+  width: 50%;
+  border-radius: 15px;
+}
+
+.res-img-wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.res-detail {
+  display: flex;
+}

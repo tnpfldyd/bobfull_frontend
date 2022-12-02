@@ -9,9 +9,9 @@ import NavbarBottom from './components/js/navbar.js'
 import Community from './routes/js/Communities.js'
 import Signup from './routes/js/Signup.js'
 import Profile from './routes/js/Profile.js'
+import Roulette from "./routes/js/Roulette";
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Roulette from "./routes/js/Roulette";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -28,6 +28,7 @@ function App() {
             <Route path="/community" element={<Community />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/roulette" element={<Roulette />} />
           </Routes>
         <NavbarBottom />
         </div>
