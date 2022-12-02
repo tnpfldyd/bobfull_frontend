@@ -34,11 +34,11 @@ function Roulette() {
       btn.style.pointerEvents = "none"; //a 태그
 
       // 총 50에 다달했을때, 즉 마지막 바퀴를 돌고나서
-      if (num === 50) {
+      if (num === 30) {
         clearInterval(ani);
         panel.style.transform = `rotate(${deg[setNum]}deg)`;
       }
-    }, 50);
+    }, 30);
   };
   // 정해진 alert띄우기, custom modal등
   const rLayerPopup = () => {
@@ -77,7 +77,7 @@ function Roulette() {
       ele.style.pointerEvents = "auto";
       rLayerPopup(setNum);
       hiddenInput.remove();
-    }, 5500);
+    }, 3000);
   };
 
   // 룰렛 이벤트 클릭 버튼

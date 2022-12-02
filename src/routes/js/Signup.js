@@ -6,7 +6,6 @@ import styled from '../../components/css/Button.module.css';
 function Signup() {
   var baseURL = process.env.REACT_APP_BASE_URL
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const onSubmit = (e) => {
@@ -23,6 +22,12 @@ function Signup() {
       data: {
         // username: username,
         email: email,
+        alcohol: false,
+        talk: false,
+        smoke: false,
+        speed: 1,
+        gender: false,
+        manner: 36.5,
         password1: password1,
         password2: password2,
       }
