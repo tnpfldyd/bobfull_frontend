@@ -1,0 +1,20 @@
+.main-flex {
+  justify-content: center;
+  margin-bottom: 5%;
+} 
+
+.main-choice {
+  height: 200px;
+  display: flex;
+  background-color: lightsalmon;
+  border-radius: 15px;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+}
+
+.main-choice a{
+  margin: auto;
+  padding: auto;
+  text-decoration: none;
+  color: white
+}

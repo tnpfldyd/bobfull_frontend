@@ -5,7 +5,7 @@ let user = createSlice({
   initialState: {
     id: null,
     email: "",
-    nickname: "",
+    nickname: "닉네임을 설정해주세요.",
     name: "",
     alcohol: null,
     talk: null,

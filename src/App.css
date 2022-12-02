@@ -6,21 +6,7 @@
   min-height: 900px;
 }
 
-.main-choice {
-  height: 200px;
-  display: flex;
-  background-color: lightsalmon;
-  border-radius: 15px;
-  margin-right: 2.5%;
-  margin-left: 2.5%;
-}
 
-.main-choice div{
-  margin: auto;
-  padding: auto;
-}
 
-.main-flex {
-  justify-content: center;
-  margin-bottom: 5%;
-} 
+
+
