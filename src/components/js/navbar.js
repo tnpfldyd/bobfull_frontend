@@ -13,7 +13,7 @@ function NavbarBottom() {
         <Nav.Link onClick={() => { navigate('/main') }} className="navtext"><img src={'/cutlery.png'} className='icon' /></Nav.Link>
         <Nav.Link onClick={() => { navigate('/login') }} className="navtext"><img src={user.isLogin ? '/logout.png' : '/enter.png'} className='icon' /></Nav.Link>
         <Nav.Link onClick={() => { navigate('/community') }} className="navtext"><img src={'/conversation.png'} className='icon' /></Nav.Link>
-        <Nav.Link onClick={() => { navigate('/profile/:id') }} className="navtext"><img src={'/user.png'} className='icon' /></Nav.Link>
+        <Nav.Link onClick={() => { navigate('/profile') }} className="navtext"><img src={'/user.png'} className='icon' /></Nav.Link>
         <Nav.Link onClick={() => { navigate(-1) }} className="navtext"><img src={'/undo.png'} className='icon' /></Nav.Link>
       </Container>
     </Navbar>

@@ -13,6 +13,8 @@ let user = createSlice({
     speed: null,
     gender: null,
     manner: null,
+    access_token: null,
+    refresh_token: null,
     isLoading: false,
     isLogin: null,
   },
@@ -28,6 +30,8 @@ let user = createSlice({
       state.speed = action.payload.speed
       state.gender = action.payload.gender
       state.manner = action.payload.manner
+      state.access_token = action.payload.access_token
+      state.refresh_token = action.payload.refresh_token
       state.isLogin = true
     },
     clearUser(state) {
@@ -41,6 +45,8 @@ let user = createSlice({
       state.speed = null
       state.gender = null
       state.manner = null
+      state.access_token = null
+      state.refresh_token = null
       state.isLogin = false
     }
   }

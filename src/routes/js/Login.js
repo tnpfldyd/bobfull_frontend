@@ -1,8 +1,11 @@
 import { Container, Form } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, clearUser } from '../../store/userSlice.js';
+import PasswordCheck from '../../components/js/Password.js'
+import EmailCheck from '../../components/js/Email.js'
 import '../css/Login.css'
 
 function Login() {
@@ -19,7 +22,6 @@ function Login() {
   const handleInputPw = (e) => {  // 비밀번호 값 받기
     setInputPw(e.target.value)
   }
-
 
   const LoginFunc = (e) => {
     e.preventDefault();
@@ -40,26 +42,18 @@ function Login() {
         withCredentials: true
       })
         .then((res) => {
-          console.log(res)
-          console.log(res.status)
           if (res.status === 200) {
-            console.log("로그인")
-            console.log(res.data.user)
-            dispatch(loginUser(res.data.user))
+            dispatch(loginUser({...res.data.user, ...res.data.user.profile, access_token: res.data.access_token, refresh_token: res.data.refresh_token}))
             setMsg("")
-          }
-          if(res.status === 400) {
-            setMsg("ID, Password가 비어있습니다.");
-          }
-          if(res.status === 401) {
-            setMsg("존재하지 않는 ID입니다.");
-          }
-          if(res.status === 402) {
-            setMsg("Password가 틀립니다.");
+            alert('성공적으로 로그인 되었습니다.')
           }
         })
         .catch((err) => {
           console.log(err)
+          if(err.code === 'ERR_BAD_REQUEST') {
+            setMsg("ID, Password가 비어있습니다.");
+            alert('비밀번호나 이메일이 다릅니다.')
+          }
         })
     }
     setLoading(true);
@@ -80,8 +74,8 @@ function Login() {
       <div className='login-logo'>
         <img src="/logo.png" alt="" width="100px"/>
       </div>
-      <h3 className='text-center mb-5'>간편하게 로그인하고 
-        <br/>다양한 서비스를 이용하세요</h3>
+      <h3 className='text-center mb-4'>간편하게 로그인하고 
+        <br/><span>다양한 서비스를 이용하세요</span></h3>
       <Form onSubmit={LoginFunc} className="login-form">
         <EmailCheck handleInputId={handleInputId} />
         <PasswordCheck handleInputPw={handleInputPw} />
@@ -92,40 +86,12 @@ function Login() {
       <div className='login-menu'>
         <div>아이디 찾기</div>
         <div>비밀번호 찾기</div>
-        <div>회원가입</div>
+        <Link to='/signup'>회원가입</Link>
       </div>
     </div>
     </Container>
   )
 }
 
-
-function PasswordCheck(props) {
-  return (
-    <>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Control
-          type="password"
-          aria-describedby="passwordHelpBlock"
-          placeholder="비밀번호"
-          onChange={props.handleInputPw}
-        />
-        <Form.Text id="passwordHelpBlock" muted>
-          비밀번호는 반드시 8-20 글자 사이여야 합니다.<br />
-          문자와 숫자로만 이루어져야 합니다.<br />
-          공백이나 특수문자, 이모지등은 불가능합니다.
-        </Form.Text>
-      </Form.Group>
-    </>
-  );
-}
-
-function EmailCheck(props) {
-  return (
-    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-      <Form.Control type="email" placeholder="이메일주소" onChange={props.handleInputId} />
-    </Form.Group>
-  );
-}
 
 export default Login;
