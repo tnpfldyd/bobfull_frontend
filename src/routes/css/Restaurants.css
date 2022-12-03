@@ -4,7 +4,8 @@
 
 .res-img {
   width: 50%;
-  border-radius: 15px;
+  border-radius: 5px;
+  padding: 10px
 }
 
 .res-img-wrapper {

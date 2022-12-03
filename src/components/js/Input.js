@@ -1,9 +1,10 @@
-function Input() {
+function Input(props) {
   
+
   return (
     <input
       onChange={(e) => {
-        setPassword2(e.target.value)
+        func(e.target.value)
       }}
       value={password2}
       type="password"

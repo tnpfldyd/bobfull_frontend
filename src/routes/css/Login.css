@@ -1,7 +1,7 @@
 .login-layout {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 130px;
   height: 80vh;
 }
 
@@ -16,7 +16,7 @@
   height: 38px;
   border: 0;
   outline: 0;
-  background: rgb(255, 141, 121);
+  background: lightsalmon;
   color : white
 }
 
@@ -33,4 +33,5 @@
 .login-logo {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px
 }
