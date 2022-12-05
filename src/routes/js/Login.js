@@ -31,19 +31,18 @@ function Login() {
     else if (!inputPw) {
       return alert("Password를 입력하세요.");
     } else {
-      axios.post(`${baseURL}/accounts/login/`, {
-        email: inputId,
-        password: inputPw,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      }, {
-        withCredentials: true
-      })
+      axios({
+        method: 'post',
+        url: `${baseURL}/accounts/login/`,
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+          email: inputId,
+          password: inputPw
+        }})
         .then((res) => {
           if (res.status === 200) {
             dispatch(loginUser({...res.data.user, ...res.data.user.profile, access_token: res.data.access_token, refresh_token: res.data.refresh_token}))
+            axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.access_token}`
             setMsg("")
             alert('성공적으로 로그인 되었습니다.')
           }
