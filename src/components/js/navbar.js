@@ -10,7 +10,7 @@ function NavbarBottom() {
   return (
     <Navbar className="footer d-flex" bg='light' expand="lg">
       <Container className="Nav-container">
-        <Nav.Link onClick={() => { navigate('/main') }} className="navtext"><img src={'/cutlery.png'} className='icon' /></Nav.Link>
+        <Nav.Link onClick={() => { navigate('/main') }} className="navtext"><img src={'/restaurant.png'} className='icon' /></Nav.Link>
         <Nav.Link onClick={() => { navigate('/login') }} className="navtext"><img src={user.isLogin ? '/logout.png' : '/enter.png'} className='icon' /></Nav.Link>
         <Nav.Link onClick={() => { navigate('/community') }} className="navtext"><img src={'/conversation.png'} className='icon' /></Nav.Link>
         <Nav.Link onClick={() => { navigate('/profile') }} className="navtext"><img src={'/user.png'} className='icon' /></Nav.Link>

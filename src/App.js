@@ -12,32 +12,34 @@ import Community from './routes/js/Communities.js'
 import Signup from './routes/js/Signup.js'
 import Profile from './routes/js/Profile.js'
 import Roulette from "./routes/js/Roulette";
+import Test from "./routes/js/Test"
 import { Routes, Route, Link, Outlet } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user);
 
-    return (
-      <div className="App">
-        {/* 페이지나누기 */}
-          <Routes>
-            <Route path="*" element={<div>404페이지</div>} />
-            <Route path="/main" element={<Main />} />  {/* 메인페이지 */}
-            <Route path="/login" element={user.isLogin ? <Profile /> : <Login />} /> {/* 로그인페이지 */}
-            <Route path="/res_index" element={<Restaurants />} />
-            <Route path="/res_detail/:id" element={<RestaurantsDetail />} />
-            <Route path="/res_category" element={<Category />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={user.isLogin ? <Profile /> : <Login />} />
-            <Route path="/profile/:id/add" element={<Roulette />} />
-            <Route path="/roulette" element={<Roulette />} />
-            <Route path="/map" element={<KakaoMap />} />
-          </Routes>
-        <NavbarBottom />
-        </div>
-    );
+  return (
+    <div className="App">
+      {/* 페이지나누기 */}
+      <Routes>
+        <Route path="*" element={<div>404페이지</div>} />
+        <Route path="/main" element={<Main />} />  {/* 메인페이지 */}
+        <Route path="/login" element={user.isLogin ? <Profile /> : <Login />} /> {/* 로그인페이지 */}
+        <Route path="/res_index" element={<Restaurants />} />
+        <Route path="/res_detail/:id" element={<RestaurantsDetail />} />
+        <Route path="/res_category" element={<Category />} />
+        <Route path="/community" element={<Community />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={user.isLogin ? <Profile /> : <Login />} />
+        <Route path="/profile/:id/add" element={<Roulette />} />
+        <Route path="/roulette" element={<Roulette />} />
+        <Route path="/map" element={<KakaoMap />} />
+        <Route path="/test" element={<Test />} />
+      </Routes>
+      <NavbarBottom />
+    </div>
+  );
 }
 
 
