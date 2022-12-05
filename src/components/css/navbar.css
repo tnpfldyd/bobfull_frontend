@@ -8,6 +8,7 @@
 }
 
 .footer {
+  z-index: 2;
   position: fixed;
   left: 0;
   right: 0;
@@ -18,9 +19,9 @@
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
-  margin: 10px 0px;
+  width: 28px;
+  height: 28px;
+  margin: 10px 0;
 }
 
 .navdiv {
@@ -28,7 +29,7 @@
 }
 
 .navtext {
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 700;
   /* : center; */
   max-width: 33.48px;
