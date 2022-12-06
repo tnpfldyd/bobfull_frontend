@@ -95,8 +95,8 @@ function Roulette() {
       <p className="result"></p>
       <div className="rouletter-bg">
         <div className="rouletter-wacu"></div>
+        <div className="rouletter-arrow"></div>
       </div>
-      <div className="rouletter-arrow"></div>
       <button className="rouletter-btn">start</button>
     </div>
   );

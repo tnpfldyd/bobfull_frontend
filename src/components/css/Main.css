@@ -36,11 +36,20 @@
   display: none;
 }
 
-.text {
+.text-box {
   z-index: 2;
   position: absolute;
   top: 50vh;
   left: 50vw;
   color: white;
   transform: translate(-50%, -50%);
+  border: solid whitesmoke;
+  border-width: 1px 0 1px 0;
+  padding: 10px;
+  text-align: end;
+}
+
+.text {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }

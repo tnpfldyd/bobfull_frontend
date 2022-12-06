@@ -14,15 +14,17 @@
 .main-flex {
   justify-content: center;
   margin-bottom: 5%;
-} 
+}
 
 .main-choice {
-  height: 150px;
+  width: 12vh;
+  height: 12vh;
   display: flex;
-  background-color: lightsalmon;
+  background-color: aliceblue;
   border-radius: 12px;
   margin-right: 2.5%;
   margin-left: 2.5%;
+  margin-bottom: 5%;
 }
 
 .main-choice1 {
@@ -33,11 +35,23 @@
 }
 
 
-.main-choice a{
+.main-choice a {
   margin: auto;
   padding: auto;
   text-decoration: none;
   color: white;
   font-weight: 400;
   font-size: 20px;
+}
+
+.choice-text {
+  text-align: center;
+  color: gray;
+  margin-bottom: 5vh;
+}
+
+.choice-img {
+  width: 12vh;
+  height: 12vh;
+  margin: auto;
 }

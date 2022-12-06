@@ -14,6 +14,7 @@ import Profile from './routes/js/Profile.js'
 import Roulette from "./routes/js/Roulette";
 import Test from "./routes/js/Test"
 import Auth from './Auth.js'
+import ProfileUpdate from './routes/js/ProfileUpdate';
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -33,7 +34,7 @@ function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={user.isLogin ? <Profile /> : <Login />} />
-        <Route path="/profile/:id/add" element={<Roulette />} />
+        <Route path="/profile/update" element={<ProfileUpdate />} />
         <Route path="/roulette" element={<Roulette />} />
         <Route path="/map" element={<KakaoMap />} />
         <Route path="/test" element={<Test />} />
