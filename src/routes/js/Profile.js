@@ -3,7 +3,7 @@ import { clearUser } from '../../store/userSlice.js';
 import { Container } from 'react-bootstrap'
 import '../css/Profile.css'
 import axios from "axios";
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 function Profile() {
   const user = useSelector((state) => state.user);
   var baseURL = process.env.REACT_APP_BASE_URL // 환경변수설정
@@ -40,7 +40,9 @@ function Profile() {
           <h4>{user.nickname ? user.nickname : '닉네임을 설정해주세요'}<span>  #{user.id}</span></h4>
         </div>
       </div>
-      <button className="profile-btn">프로필 수정</button>
+      <button className="profile-btn"><Link to='/profile/update'>
+        프로필 수정
+      </Link></button>
 
       {/* 매너온도 */}
       <div>
