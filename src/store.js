@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import user from './store/userSlice.js'
+import kakaoAuth from './store/KakaoAuth.js'
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
@@ -20,6 +21,7 @@ export let {changeURL} = baseURL.actions;
 const reducers = combineReducers({
   user: user.reducer,
   baseURL: baseURL.reducer,
+  kakaoAuth: kakaoAuth.reducer,
 })
 
 const persistConfig = {
