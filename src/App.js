@@ -37,7 +37,7 @@ function App() {
         <Route path="/roulette" element={<Roulette />} />
         <Route path="/map" element={<KakaoMap />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/oauth/callback/kakao/" element={<Auth />} />
+        <Route path="/oauth/callback/kakao" element={<Auth />} />
       </Routes>
       <NavbarBottom />
     </div>
