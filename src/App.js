@@ -13,7 +13,8 @@ import Signup from './routes/js/Signup.js'
 import Profile from './routes/js/Profile.js'
 import Roulette from "./routes/js/Roulette";
 import Test from "./routes/js/Test"
-import Auth from './Auth.js'
+import KaKaoAuth from './components/js/KakaoAuth.js'
+import GoogleAuth from './components/js/GoogleAuth.js'
 import ProfileUpdate from './routes/js/ProfileUpdate';
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +39,8 @@ function App() {
         <Route path="/roulette" element={<Roulette />} />
         <Route path="/map" element={<KakaoMap />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/oauth/callback/kakao" element={<Auth />} />
+        <Route path="/oauth/callback/kakao" element={<KaKaoAuth />} />
+        <Route path="/accounts/google/callback/" element={<GoogleAuth />} />
       </Routes>
       <NavbarBottom />
     </div>

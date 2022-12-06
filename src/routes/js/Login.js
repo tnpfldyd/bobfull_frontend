@@ -7,6 +7,7 @@ import { loginUser, clearUser } from '../../store/userSlice.js';
 import PasswordCheck from '../../components/js/Password.js'
 import EmailCheck from '../../components/js/Email.js'
 import KakaoLogin from '../../components/js/KakaoLogin.js'
+import GoogleLogin from '../../components/js/GoogleLogin.js'
 import '../css/Login.css'
 
 function Login() {
@@ -84,6 +85,7 @@ function Login() {
         </div>
       </Form>
       <KakaoLogin />
+      <GoogleLogin /> 
       <div className='login-menu'>
         <div>아이디 찾기</div>
         <div>비밀번호 찾기</div>
