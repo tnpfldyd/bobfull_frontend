@@ -55,7 +55,7 @@ function Profile() {
           <div className="profile-manner-check" style={{ width: `${user.manner}%` }}></div>
         </div>
       </div>
-      <button onClick={() => dispatch(clearUser())}>로그아웃</button>
+      <button onClick={() => LogoutFunc()}>로그아웃</button>
     </Container>
   )
 }
