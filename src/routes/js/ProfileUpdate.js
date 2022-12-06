@@ -1,9 +1,15 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import '../../components/css/Profileupdate.css';
+import { useEffect, useState } from 'react';
+import { Container, Form } from 'react-bootstrap';
+
 function ProfileAdd() {
-  const user = useSelector((state) => state.user);
+  let dispatch = useDispatch();
   var baseURL = process.env.REACT_APP_BASE_URL
+  const user = useSelector((state) => state.user);
+  const [userState, setUserState] = useState({})
+
   const ProfileUpdate = (e) => {
     e.preventDefault();
     let userspeed = 0;
@@ -20,11 +26,10 @@ function ProfileAdd() {
     console.log(userspeed)
     axios({
       method: 'put',
-      url: `${baseURL}/accounts/user/`,
+      url: `${baseURL}/user/${user.pk}/`,
       headers: { 'Content-Type': 'application/json' },
       data: {
-        email: user.email,
-        nickname: e.target[0].value,
+        nickname: 'yoon',
         gender: e.target[1].checked,
         smoke: e.target[2].checked,
         speed: userspeed,
@@ -37,36 +42,35 @@ function ProfileAdd() {
       })
   }
   return (
-    <div>
-      <form onSubmit={ProfileUpdate}>
+    <Container>
+      <Form onSubmit={ProfileUpdate}>
         <h3 className="text-center my-5">프로필을 입력하면<br />나와 더 잘 맞는<br /> 밥풀을 만날 수 있어요.</h3>
-
-        <input type='text' />
+        <Form.Control type='text' />
         <div className="d-flex align-items-center justify-content-between me-5 px-5">
           <h2 className="me-5 my-0">성별</h2>
           <label className="gender-button">
-            {user.gender ? <input type="checkbox" defaultChecked /> : <input type="checkbox" />}
+            {user.gender ? <input type="checkbox" /> : <input type="checkbox" defaultChecked />}
             <span className="onoff-switch"></span>
           </label>
         </div>
         <div className="d-flex align-items-center justify-content-between me-5 px-5">
           <h2 className="me-5 my-0">흡연</h2>
           <label className="smoke-button">
-            {user.smoke ? <input type="checkbox" defaultChecked /> : <input type="checkbox" />}
+            {user.smoke ? <input type="checkbox" /> : <input type="checkbox" defaultChecked />}
             <span className="onoff-switch"></span>
           </label>
         </div>
         <div className="d-flex align-items-center justify-content-between me-5 px-5">
           <h2 className="me-5 my-0">음주</h2>
           <label className="alcohol-button">
-            {user.alcohol ? <input type="checkbox" defaultChecked /> : <input type="checkbox" />}
+            {user.alcohol ? <input type="checkbox" /> : <input type="checkbox" defaultChecked />}
             <span className="onoff-switch"></span>
           </label>
         </div>
         <div className="d-flex align-items-center justify-content-between me-5 px-5">
           <h2 className="me-5 my-0">대화</h2>
           <label className="talk-button">
-            {user.talk ? <input type="checkbox" defaultChecked /> : <input type="checkbox" />}
+            {user.talk ? <input type="checkbox" /> : <input type="checkbox" defaultChecked />}
             <span className="onoff-switch"></span>
           </label>
         </div>
@@ -82,8 +86,8 @@ function ProfileAdd() {
         <div className='login-btn'>
           <button type='submit'>수정</button>
         </div>
-      </form>
-    </div>
+      </Form>
+    </Container>
   )
 }
 
