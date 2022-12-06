@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser, clearUser } from '../../store/userSlice.js';
 import PasswordCheck from '../../components/js/Password.js'
 import EmailCheck from '../../components/js/Email.js'
+import KakaoLogin from '../../components/js/KakaoLogin.js'
 import '../css/Login.css'
 
 function Login() {
@@ -82,6 +83,7 @@ function Login() {
           <button type='submit' disabled={loading}>로그인</button>
         </div>
       </Form>
+      <KakaoLogin />
       <div className='login-menu'>
         <div>아이디 찾기</div>
         <div>비밀번호 찾기</div>
