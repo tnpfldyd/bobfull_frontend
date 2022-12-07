@@ -76,7 +76,7 @@ function RestaurantsDetail() {
     centerPadding: "20px"
   };
   return (
-    <Container>
+    <Container style={{ padding: '0' }}>
       {
         restaurant ?
           <>
