@@ -6,3 +6,16 @@
   margin-bottom: 20px;
 
 }
+
+.res-date {
+  color: gray;
+  font-size: 12px;
+}
+
+.review-span {
+  font-size: 15px;
+}
+
+.review-p {
+  margin-bottom: 20px;
+}

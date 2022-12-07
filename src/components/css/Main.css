@@ -40,16 +40,18 @@
   z-index: 2;
   position: absolute;
   top: 50vh;
-  left: 50vw;
+  left: 75vw;
   color: white;
   transform: translate(-50%, -50%);
   border: solid whitesmoke;
   border-width: 1px 0 1px 0;
   padding: 10px;
   text-align: end;
+  width: 140px;
 }
 
 .text {
   margin-top: 1vh;
   margin-bottom: 1vh;
+  font: 2.5em 'GmarketSansMedium';
 }
