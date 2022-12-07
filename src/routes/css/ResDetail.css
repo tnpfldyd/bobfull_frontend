@@ -19,3 +19,9 @@
 .review-p {
   margin-bottom: 20px;
 }
+
+.res-detail-img {
+  height: 300px;
+  border-radius: 5px;
+  padding: 10px
+}
