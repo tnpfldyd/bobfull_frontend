@@ -60,7 +60,7 @@ function RestaurantsDetail() {
     return `${Math.floor(years)}년 전`;
   };
   return (
-    <Container>
+    <Container style={{paddingBottom: "15%"}}>
       {
         restaurant ?
           <>
@@ -103,13 +103,7 @@ function RestaurantsDetail() {
           placeholder='식당리뷰'
           className='mb-3'
         />
-        <div className="select d-flex justify-content-between">
-          <input type="radio" id="select1" name="speed" /><label htmlFor="select1"><img className="speedimg" src="/snail.png" /></label>
-          <input type="radio" id="select2" name="speed" /><label htmlFor="select2"><img className="speedimg" src="/turtle.png" /></label>
-          <input type="radio" id="select3" name="speed" defaultChecked /><label htmlFor="select3"><img className="speedimg" src="/teddy-bear.png" /></label>
-          <input type="radio" id="select4" name="speed" /><label htmlFor="select4"><img className="speedimg" src="/cheetah.png" /></label>
-          <input type="radio" id="select5" name="speed" /><label htmlFor="select5"><img className="speedimg" src="/growth.png" /></label>
-        </div>
+
         <button>작성</button>
       </Form>
       <div>매칭룸 입장하기</div>

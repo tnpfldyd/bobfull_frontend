@@ -23,7 +23,7 @@ function App() {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="App">
+    <div className="App" style={{paddingBottom: "70px"}}>
       {/* 페이지나누기 */}
       <Routes>
         <Route path="*" element={<div>404페이지</div>} />
