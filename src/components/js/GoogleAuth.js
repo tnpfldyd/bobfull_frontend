@@ -21,6 +21,7 @@ const GoogleAuth = () => {
         console.log({...res.data.user})
         dispatch(loginUser({...res.data.user, access_token: res.data.access_token, refresh_token: res.data.refresh_token}))
         axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.access_token}`
+        localStorage.setItem('Authorization', `Bearer ${res.data.access_token}`)
         alert('정상적으로 로그인 되었습니다.')
         navigate('/profile')
       })

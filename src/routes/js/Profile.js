@@ -24,6 +24,7 @@ function Profile() {
         console.log(res)
         alert('성공적으로 로그아웃 되었습니다.')
         dispatch(clearUser());
+        localStorage.setItem('Authorization', "")
       })
       .catch((err) => {
         return console.error(err)
