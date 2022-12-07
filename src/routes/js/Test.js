@@ -1,4 +1,5 @@
 import '../../components/css/Main.css';
+
 function Test() {
   setTimeout("location.href='http://localhost:3000/main'", 4900);
   return (

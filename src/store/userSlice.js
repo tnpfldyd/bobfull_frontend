@@ -48,9 +48,19 @@ let user = createSlice({
       state.access_token = null
       state.refresh_token = null
       state.isLogin = false
+    },
+    changeUser(state, action) {
+      state.nickname = action.payload.nickname
+      state.name = action.payload.name
+      state.alcohol = action.payload.alcohol
+      state.talk = action.payload.talk
+      state.smoke = action.payload.smoke
+      state.speed = action.payload.speed
+      state.gender = action.payload.gender
+      state.manner = action.payload.manner
     }
   }
 })
 
-export let {loginUser, clearUser} = user.actions;
+export let {loginUser, clearUser, changeUser} = user.actions;
 export default user

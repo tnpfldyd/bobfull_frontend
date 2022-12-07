@@ -13,6 +13,8 @@ import {persistStore} from "redux-persist"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let persistor = persistStore(store)
 
+axios.defaults.headers.common["Authorization"] = localStorage.getItem("Authorization")
+
 root.render(
   // <React.StrictMode>
   <Provider store={store}>
@@ -28,7 +30,6 @@ root.render(
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

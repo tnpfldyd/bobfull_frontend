@@ -45,6 +45,7 @@ function Login() {
           if (res.status === 200) {
             dispatch(loginUser({...res.data.user, ...res.data.user.profile, access_token: res.data.access_token, refresh_token: res.data.refresh_token}))
             axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.access_token}`
+            localStorage.setItem('Authorization', `Bearer ${res.data.access_token}`)
             setMsg("")
             alert('성공적으로 로그인 되었습니다.')
           }
