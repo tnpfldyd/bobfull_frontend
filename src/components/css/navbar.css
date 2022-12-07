@@ -3,10 +3,6 @@
   display: flex;
 }
 
-.Nav-container {
-  justify-content: space-evenly !important;
-}
-
 .footer {
   z-index: 2;
   position: fixed;
