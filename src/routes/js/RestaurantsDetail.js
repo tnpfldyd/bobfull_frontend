@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import '../css/ResDetail.css';
 import styled from '../../components/css/Button.module.css';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function RestaurantsDetail() {
   let { id } = useParams();
@@ -36,11 +39,13 @@ function RestaurantsDetail() {
     console.log(e.target[0].value)
     const submit = await axios({
       method: 'post',
-      url: `${baseURL}/accounts/registration/`,
+      url: `${baseURL}/articles/${id}/review/`,
       data: {
         content: e.target[0].value,
+        grade: '⭐⭐⭐⭐⭐'
       }
     })
+    e.target[0].reset();
   }
   const detailDate = (a) => {
     const milliSeconds = new Date() - a;
@@ -59,18 +64,29 @@ function RestaurantsDetail() {
     const years = days / 365;
     return `${Math.floor(years)}년 전`;
   };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "20px"
+  };
   return (
-    <Container style={{paddingBottom: "15%"}}>
+    <Container>
       {
         restaurant ?
           <>
-            <div className='res-img-wrapper res-img-div'>
+            <Slider {...settings}>
               {restaurant.images.map((img, i) => {
                 return (
-                  <img src={decodeURIComponent(restaurant.images[i].image.replace('http://127.0.0.1:8000/media/', ''))} className='res-img' />
+                  <img src={decodeURIComponent(restaurant.images[i].image.replace('http://127.0.0.1:8000/media/', ''))} className='res-detail-img' />
                 )
               })}
-            </div>
+            </Slider>
             <button className={styled.category}>{restaurant.category_name}</button>
             <h3 className={styled.name}>
               {restaurant.name}
