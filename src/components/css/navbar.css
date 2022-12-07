@@ -3,18 +3,12 @@
   display: flex;
 }
 
-.Nav-container {
-  justify-content: space-evenly !important;
-}
-
 .footer {
   z-index: 2;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: grey; */
-  /* opacity: 0.5; */
   text-align: center;
 }
 

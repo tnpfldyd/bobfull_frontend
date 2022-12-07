@@ -22,6 +22,10 @@
 
 .res-detail-img {
   height: 300px;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 10px
+}
+
+.slick-arrow {
+  display: none !important;
 }
