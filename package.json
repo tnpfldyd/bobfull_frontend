@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.1",
+        "@tanstack/react-query": "^4.19.1",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
@@ -22,6 +23,8 @@
         "react-cookie": "^4.1.1",
         "react-dom": "^18.2.0",
         "react-hook-geolocation": "^1.1.0",
+        "react-icon": "^1.0.0",
+        "react-icons": "^4.7.1",
         "react-kakao-maps-sdk": "^1.1.5",
         "react-moment": "^1.1.2",
         "react-redux": "^8.0.5",
@@ -31,6 +34,7 @@
         "redux-devtools-extension": "^2.13.9",
         "redux-persist": "^6.0.0",
         "slick-carousel": "^1.8.1",
+        "styled-components": "^5.3.6",
         "web-vitals": "^2.1.4"
     },
     "scripts": {

@@ -8,9 +8,10 @@ import Location from '../../hooks/useWatchLocation.js'
 function Restaurants() {
   var baseURL = process.env.REACT_APP_BASE_URL
   const [restaurants, setRestaurants] = useState()
+
   const getRes = async () => {
     const res = await axios.get(`${baseURL}/restaurant/`, { headers: { 'Content-Type': 'application/json' } })
-    setRestaurants(res.data)
+    setRestaurants(res.data.results)
   }
 
   // 랜더링시 레스토랑 정보 받아오기

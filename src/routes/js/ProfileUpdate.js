@@ -28,10 +28,6 @@ function ProfileAdd() {
       data: userState
     })
       .then((res) => {
-        console.log(res)
-        console.log(user)
-        console.log(userState)
-        console.log({...user, ...userState})
         dispatch(changeUser({...user, ...userState}))
         alert('성공적으로 업데이트 되었습니다')
       })
