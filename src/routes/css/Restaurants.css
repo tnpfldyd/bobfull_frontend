@@ -4,7 +4,7 @@
 
 .res-img {
   width: 50%;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 10px
 }
 
@@ -15,4 +15,13 @@
 
 .res-detail {
   display: flex;
+}
+
+.res-index-name {
+  text-decoration: none;
+  color: black;
+}
+
+.res-index-h3 {
+  margin: auto 0;
 }

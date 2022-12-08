@@ -23,14 +23,14 @@ function App() {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="App" style={{paddingBottom: "70px"}}>
+    <div className="App" style={{ paddingBottom: "70px" }}>
       {/* 페이지나누기 */}
       <Routes>
         <Route path="*" element={<div>404페이지</div>} />
         <Route path="/main" element={<Main />} />  {/* 메인페이지 */}
         <Route path="/login" element={user.isLogin ? <Profile /> : <Login />} /> {/* 로그인페이지 */}
         <Route path="/res_index" element={<Restaurants />} />
-        <Route path="/res_detail/:id" element={<RestaurantsDetail />} />
+        <Route path="/res_index/:id" element={<RestaurantsDetail />} />
         <Route path="/res_category" element={<Category />} />
         <Route path="/community" element={<Community />} />
         <Route path="/signup" element={<Signup />} />
