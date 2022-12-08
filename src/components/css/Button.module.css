@@ -41,3 +41,26 @@
   font-weight: 1000;
   margin: 20px 0;
 }
+
+.categorynomargin {
+  color: white;
+  background-color: rgb(255, 141, 121);
+  padding: 5px 5px;
+  border: 0;
+  border-radius: 15px;
+  width: 100px;
+  font-size: small;
+}
+
+.numberbtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  color: white;
+  font-size: small;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.425);
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
+}
