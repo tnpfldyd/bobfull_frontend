@@ -9,15 +9,10 @@ import styled from '../../components/css/Button.module.css';
 
 function Restaurants() {
   var baseURL = process.env.REACT_APP_BASE_URL
-  const [restaurants, setRestaurants] = useState()
+  const [restaurants, setRestaurants] = useState([])
   const [number, setNumber] = useState(0)
   const [loading, setLoading] = useState(false)
   const [ref, inView] = useInView()
-  
-  const getRes = async () => {
-    const res = await axios.get(`${baseURL}/restaurant/`, { headers: { 'Content-Type': 'application/json' } })
-    setRestaurants(res.data.results)
-  }
 
   const getItems = useCallback(async () => {
     setLoading(true)

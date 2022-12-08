@@ -129,7 +129,7 @@ function RestaurantsDetail() {
   };
 
   return (
-    <Container style={{ padding: '0' }}>
+    <Container>
       {
         restaurant ?
           <>
