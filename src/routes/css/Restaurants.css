@@ -3,8 +3,8 @@
 }
 
 .res-img {
-  width: 100%;
-  border-radius: 5px;
+  width: 50%;
+  border-radius: 20px;
   padding: 10px
 }
 
@@ -15,4 +15,14 @@
 
 .res-detail {
   display: flex;
+}
+
+.res-index-name {
+  text-decoration: none;
+  color: black;
+}
+
+.res-index-h3 {
+  margin: 10px 0;
+  font-weight: 1000px;
 }

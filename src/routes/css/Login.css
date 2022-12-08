@@ -17,18 +17,16 @@
   border: 0;
   outline: 0;
   background: lightsalmon;
-  color : white
+  color: white
 }
 
 .login-menu {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-.login-menu div {
-  
-}
+.login-menu div {}
 
 .login-logo {
   display: flex;
