@@ -9,6 +9,8 @@ import { loginUser, clearUser } from '../../store/userSlice.js'
 const GoogleAuth = () => {
   const dispatch = useDispatch()
   const code = new URL(window.location.href).searchParams.get('code')
+  console.log(window.location.href)
+  console.log(code)
   let navigate = useNavigate()
 
   useEffect(() => {

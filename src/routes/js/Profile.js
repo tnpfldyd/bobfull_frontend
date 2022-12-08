@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap'
 import '../css/Profile.css'
 import axios from "axios";
 import { useParams, Link } from 'react-router-dom'
+
 function Profile() {
   const user = useSelector((state) => state.user);
   var baseURL = process.env.REACT_APP_BASE_URL // 환경변수설정
