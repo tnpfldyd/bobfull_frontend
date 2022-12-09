@@ -18,6 +18,8 @@ import GoogleAuth from './components/js/GoogleAuth.js'
 import ProfileUpdate from './routes/js/ProfileUpdate';
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import MatchingRoom from "./routes/js/MatchingRoom.js" 
+import MatchingRoomDetail from "./routes/js/MatchingRoomDetail.js" 
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -41,6 +43,8 @@ function App() {
         <Route path="/test" element={<Test />} />
         <Route path="/oauth/callback/kakao" element={<KaKaoAuth />} />
         <Route path="/accounts/google/callback/" element={<GoogleAuth />} />
+        <Route path="/matching_room/:id" element={<MatchingRoom />} />
+        <Route path="/matching_room/:id/:detail" element={<MatchingRoomDetail />} />
       </Routes>
       <NavbarBottom />
     </div>
