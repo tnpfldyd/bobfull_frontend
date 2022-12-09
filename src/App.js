@@ -25,7 +25,7 @@ function App() {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="App" style={{ paddingBottom: "70px" }}>
+    <div className="App" style={{ paddingBottom: "74.5px" }}>
       {/* 페이지나누기 */}
       <Routes>
         <Route path="*" element={<div>404페이지</div>} />
