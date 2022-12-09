@@ -4,6 +4,8 @@ import { Container } from 'react-bootstrap'
 import '../css/Profile.css'
 import axios from "axios";
 import { useParams, Link } from 'react-router-dom'
+import styled from "../../../src/components/css/Button.module.css"
+
 function Profile() {
   const user = useSelector((state) => state.user);
   var baseURL = process.env.REACT_APP_BASE_URL // 환경변수설정
@@ -41,7 +43,7 @@ function Profile() {
           <h4>{user.nickname ? user.nickname : '닉네임을 설정해주세요'}<span>  #{user.id}</span></h4>
         </div>
       </div>
-      <button className="profile-btn"><Link to='/profile/update'>
+      <button className={styled.btn}><Link to='/profile/update' style={{ textDecoration: 'none', color: 'white' }}>
         프로필 수정
       </Link></button>
 
